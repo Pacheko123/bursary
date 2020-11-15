@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 15, 2020 at 07:24 AM
+-- Generation Time: Nov 15, 2020 at 07:19 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.33
 

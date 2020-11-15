@@ -12,7 +12,7 @@
 
     if ($db_mail==$email & $db_pass==$password) {
       // code...
-      header("Location: dashboard@student.php");
+      header("Location: student.php");
     }else {
 
       echo "string";

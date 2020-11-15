@@ -1,15 +1,40 @@
 
 <?php include('includes/static.php'); ?>
 
-<html>
-<head>
+<nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar ">
+  <!-- Navbar brand -->
+  <div class="container">
+    <a class="navbar-brand" href="index.php">E Bursary.</a>
+      <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+    <!-- Links -->
+        <ul class="navbar-nav mr-auto">
 
-	<meta name="viewport" content="width=device-width">
-	<title>BURSARY APPLICATION | WELCOME</title>
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
+          <li class='nav-item'>
+            <a class="nav-link" href="register.php">REGISTER</a>
+          </li>
+          <li class='nav-item'>
+            <a class="nav-link" href="login.php">LOGIN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">POLICY</a>
+          </li>
+        </ul>
 
-</head>
-<body>
+      </div>
+      <!-- Collapsible content -->
+      <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Enter email" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Subscribe</button>
+    </form>
+</div>
+</nav>
+
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
@@ -49,10 +74,6 @@
         <input type="password" class="form-control" id="exampleInputPassword1" name="c_password">
       </div>
 
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Remember Me</label>
-      </div>
       <button type="submit" class="btn btn-primary" name="submit">Submit</button>Dont have an account yet?<a href="login.php">LOGIN</a>
 </form>
 </div>
