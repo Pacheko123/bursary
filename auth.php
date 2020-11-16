@@ -11,7 +11,13 @@
     $gender =  $_POST['gender'];
 
     $query = "insert into student(stud_name,stud_mail,pass,id,gender,phone) values('$name','$email','$password','$id','$gender','$phone')";
-    $result = mysqli_query($connect,$query) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($connect), E_USER_ERROR);
+
+    $result = mysqli_query($con,$query);
+    if ($result) {
+        header("Location: login.php");
+    }else{
+         echo "failed. " .mysqli_error();
+    }
 }
 
 

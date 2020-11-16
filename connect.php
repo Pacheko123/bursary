@@ -4,8 +4,6 @@
   $user = 'root';
   $password = "";
 
-  $connect = mysqli_connect($server,$user,$password,'fund');
-  if($connect){
-    echo 'success connection';
-  }
+  $con = mysqli_connect($server,$user,$password,'fund')or die ("error" . mysqli_error($con));
+  
 ?>

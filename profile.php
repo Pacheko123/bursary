@@ -1,4 +1,10 @@
-<?php include('includes/static.php'); ?>
+<?php 
+if(!isset($_SESSION)) {
+session_start();
+  }
+?>
+<?php include('includes/static.php');
+include("connect.php"); ?>
 	<nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar ">
   <!-- Navbar brand -->
   <div class="container">
@@ -33,7 +39,13 @@
 </nav>
 <div class="container">
 <div class="row">
-	<div class="col-md-2 offset-md-10" id="displayInfo">Welcome! John Doe</div>
+	 <div class="container">
+      <div class="row">
+        <div class="col-md-4 offset-md-8" style="color: green;">
+          Welcome <b><?php echo $_SESSION['SESS_NAME']; ?></a><hr>
+
+     </div>
+   </div>
 </div>
 </div>
 <div class="container">
@@ -50,7 +62,12 @@
 
 
 
-<?php include('includes/static.php'); ?>
+<?php include('includes/static.php');
+
+$sess=$_SESSION['SESS_NAME'];
+$count = 1;
+$result=mysqli_query($con,"SELECT * FROM student where stud_mail='$sess'"); ?>
+ 
 
 <html>
 <head>
@@ -61,7 +78,8 @@
 
 </head>
 <body>
-<div class="container">
+ 
+<!--div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
 <form method="post" action="auth.php">
@@ -69,16 +87,16 @@
       <div class="form-group">
         <div class="form-group">
           <label for="exampleInputPassword1" >Name</label>
-          <input type="text" class="form-control" name="name">
+          <input type="text" class="form-control" name="name" value="">
         </div>
         <label for="exampleInputEmail1" >Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mail">
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mail" value="<?php echo $_SESSION['SESS_NAME']; ?>">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
       
       <div class="form-group">
         <label for="exampleInputPassword1" >Phone Number</label>
-        <input type="number" class="form-control" name="phone">
+        <input type="number" class="form-control" name="phone" value="<?php echo $phone ?>">
       </div>
       <div class="form-group">
     <label for="exampleFormControlSelect1">Gender</label>
@@ -90,7 +108,7 @@
   </div>
       <div class="form-group">
         <label for="exampleInputPassword1" >Current Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password" value="(<?php echo ucfirst($user['password']); ?>)">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1" >New Password</label>
@@ -101,7 +119,45 @@
 </form>
 </div>
 </div>
-</div>
+</div>-->
+<?php
+$count = 1;
+$result=mysqli_query($con,"SELECT * FROM student where stud_mail='$sess'")or die(mysqli_error($con)); ?>
+ <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Admission NUmber</th>
+        <th scope="col">Political Party</th>
+         <th scope="col">Phone</th>
+        <th scope="col">Seat</th>
+        <th scope="col">Year of Study</th>
+        <th scope="col">Verify</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+ 
+                 <?php while ($row=mysqli_fetch_array($result)){
+          ?>
+          <tr>
+            <td><?php echo $count++ ?></td>
+            <td><?php echo $row['stud_name']; ?></td>
+             <td><?php echo $row['asp_adm']; ?></td>
+              <td><?php echo $row['party']; ?></td>
+              <td><?php echo $row['phone']; ?></td>
+               <td><?php echo $row['asp_seat']; ?></td>
+                <td><?php echo $row['year']; ?></td>
+             
+              <td><div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" value="">
+    <label class="form-check-label" for="exampleCheck1"></label>
+  </div></td>
+             </tr>
+           <?php }?>
+       
 </body>
 </html>
 
